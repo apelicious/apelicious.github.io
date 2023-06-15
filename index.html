@@ -1,57 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Informasi Produk</title>
+
+  <title>Product Information</title>
   <!-- Tambahkan meta tag viewport untuk responsif -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Tambahkan link CSS Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-  <!-- Tambahkan script jQuery dan Bootstrap JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <!-- Tambahkan style CSS tambahan -->
+  <style>
+    .navbar-brand img {
+      height: auto; /* Atur tinggi gambar */
+      width: 150px; /* Atur lebar gambar agar tetap proporsional */
+    }
+  </style>
+</head>
 
-  <!-- Script JavaScript -->
+<!-- Tambahkan style CSS tambahan -->
+<style>
+  .navbar-brand {
+    font-size: 40px; /* Atur ukuran font tulisan */
+  }
+</style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">
+      <img src="img/Logo.png" alt="Logo">
+      PT Apelicious Co. Indonesia
+    </a>
+  </nav>
+  <div class="container">
+    <h1>Product Information</h1>
+    <button class="btn btn-primary" onclick="bacaRFID()">Baca RFID</button>
+
+    <!-- Tabel untuk menampilkan data produk -->
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Net Weight</th>
+          <th>Production Date</th>
+          <th>Expired Date</th>
+        </tr>
+      </thead>
+      <tbody id="tabelProduk">
+        <!-- Data produk akan ditambahkan oleh JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tambahkan script JavaScript -->
   <script>
     function bacaRFID() {
       // Menggunakan perangkat pembaca RFID dan mendapatkan data RFID
-      var dataRFID = "Product Name: Apelicious | Netto: 6 x 15 g | Production Date: 16 June 2023 | Expired Date: 16 June 2024"; // Contoh data RFID yang terbaca
+      var dataRFID = "ABCDE12345"; // Contoh data RFID yang terbaca
 
-      // Tampilkan data RFID pada tabel
-      tambahDataRFID(dataRFID);
+      // Simulasikan data produk berdasarkan data RFID
+      var produk = {
+        productName: "Apple Chips",
+        netWeight: "6 x 15 g",
+        productionDate: "16 June 2023",
+        expiredDate: "16 June 2024"
+      };
+
+      // Tampilkan data produk pada tabel
+      tambahDataProduk(produk);
     }
 
-    function tambahDataRFID(dataRFID) {
+    function tambahDataProduk(produk) {
       // Ambil referensi tabel
-      var tabel = document.getElementById("tabelRFID");
+      var tabel = document.getElementById("tabelProduk");
 
       // Buat baris baru
       var row = tabel.insertRow();
 
-      // Tambahkan sel dengan data RFID
-      var cellRFID = row.insertCell();
-      cellRFID.innerHTML = dataRFID;
+      // Tambahkan sel dengan data produk
+      var cellProductName = row.insertCell();
+      cellProductName.innerHTML = produk.productName;
+
+      var cellNetWeight = row.insertCell();
+      cellNetWeight.innerHTML = produk.netWeight;
+
+      var cellProductionDate = row.insertCell();
+      cellProductionDate.innerHTML = produk.productionDate;
+
+      var cellExpiredDate = row.insertCell();
+      cellExpiredDate.innerHTML = produk.expiredDate;
     }
   </script>
-</head>
-<body>
-  <div class="container">
-    <h1>Informasi Produk</h1>
-    <button class="btn btn-primary" onclick="bacaRFID()">Baca RFID</button>
 
-    <!-- Tabel untuk menampilkan data RFID -->
-    <table class="table mt-4">
-      <thead>
-        <tr>
-          <th>Data Produk</th>
-        </tr>
-      </thead>
-      <tbody id="tabelRFID">
-        <!-- Data RFID akan ditambahkan oleh JavaScript -->
-      </tbody>
-    </table>
-  </div>
+    <!-- Footer -->
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="https://forms.gle/pBV6FgsCHuiHPpHo8" class="nav-link px-2 text-muted">Kritik & Saran</a></li>
+          <li class="nav-item"><a href="https://api.whatsapp.com/send/?phone=6285606912301&text&type=phone_number&app_absent=0" class="nav-link px-2 text-muted">Customer Care</a></li>
+        </ul>
+        <p class="text-center text-muted">© PT Apelicious Co. Indonesia</p>
+      </footer>
+    </div>
+
 </body>
 </html>
